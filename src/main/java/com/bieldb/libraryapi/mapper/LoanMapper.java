@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 
 import com.bieldb.libraryapi.dto.LoanRequestDTO;
 import com.bieldb.libraryapi.dto.LoanResponseDTO;
-import com.bieldb.libraryapi.model.Book;
 import com.bieldb.libraryapi.model.Loan;
 
 @Component
