@@ -11,8 +11,6 @@ public class LoanMapper {
     public Loan toEntity(LoanRequestDTO dto) {
         Loan loan = new Loan();
         loan.setNomeLeitor(dto.getNomeLeitor());
-        loan.setDataEmprestimo(dto.getDataEmprestimo());
-        loan.setStatus(dto.getStatus());
         loan.setDataDevolucaoPrevista(dto.getDataDevolucaoPrevista());
         return loan;
     }
