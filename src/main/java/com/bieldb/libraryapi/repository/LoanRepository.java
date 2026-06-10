@@ -10,5 +10,5 @@ import com.bieldb.libraryapi.model.LoanStatus;
 
 public interface LoanRepository extends JpaRepository<Loan, Long>{
     List<Loan> findByStatus(LoanStatus status);
-    List<Loan> findByDataDevolucaoPrevistaBefore(LocalDate data);
+    List<Loan> findByDataDevolucaoPrevistaBeforeAndStatusNot(LocalDate data, LoanStatus status);
 }
