@@ -8,14 +8,14 @@ import com.bieldb.libraryapi.model.Loan;
 
 @Component
 public class LoanMapper {
-    public Loan toEntity(LoanRequestDTO dto) {
+    public Loan toEntityLoan(LoanRequestDTO dto) {
         Loan loan = new Loan();
         loan.setNomeLeitor(dto.getNomeLeitor());
         loan.setDataDevolucaoPrevista(dto.getDataDevolucaoPrevista());
         return loan;
     }
 
-    public LoanResponseDTO toDTO(Loan loan) {
+    public LoanResponseDTO toDTOLoan(Loan loan) {
         LoanResponseDTO loanResponseDTO = new LoanResponseDTO();
         loanResponseDTO.setId(loan.getId());
         loanResponseDTO.setNomeLeitor(loan.getNomeLeitor());

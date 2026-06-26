@@ -59,9 +59,9 @@ class BookServiceTest {
         responseDTO.setQuantidadeDisponivel(savedBook.getQuantidadeDisponivel());
 
         when(bookRepository.findByIsbn(request.getIsbn())).thenReturn(Optional.empty());
-        when(bookMapper.toEntity(request)).thenReturn(bookEntity);
+        when(bookMapper.toEntityBook(request)).thenReturn(bookEntity);
         when(bookRepository.save(bookEntity)).thenReturn(savedBook);
-        when(bookMapper.toDTO(savedBook)).thenReturn(responseDTO);
+        when(bookMapper.toDTOBook(savedBook)).thenReturn(responseDTO);
 
         BookResponseDTO result = bookService.create(request);
 

@@ -54,7 +54,7 @@ class LoanServiceTest {
         responseDTO.setTituloLivro("Domain-Driven Design");
 
         when(loanRepository.findById(loan.getId())).thenReturn(Optional.of(loan));
-        when(loanMapper.toDTO(loan)).thenReturn(responseDTO);
+        when(loanMapper.toDTOLoan(loan)).thenReturn(responseDTO);
         when(loanRepository.save(loan)).thenReturn(loan);
         when(bookRepository.save(book)).thenReturn(book);
 
