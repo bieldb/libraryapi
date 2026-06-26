@@ -30,22 +30,22 @@ public class BookService {
             throw new BookAlreadyExistsException(dto.getIsbn());
         }
 
-        Book book = bookMapper.toEntity(dto);
+        Book book = bookMapper.toEntityBook(dto);
         book = bookRepository.save(book);
-        return bookMapper.toDTO(book);
+        return bookMapper.toDTOBook(book);
     }
 
     public BookResponseDTO getById(Long id) {
         Book book = bookRepository.findById(id)
         .orElseThrow(() -> new BookNotFoundException(id));
-        return bookMapper.toDTO(book);
+        return bookMapper.toDTOBook(book);
     }
 
     public List<BookResponseDTO> getAll() {
         List<Book> books = bookRepository.findAll();
         List<BookResponseDTO> dtos = new ArrayList<>();
         for (Book book : books) {
-            dtos.add(bookMapper.toDTO(book));
+            dtos.add(bookMapper.toDTOBook(book));
         }
         return dtos;
     }
@@ -65,7 +65,7 @@ public class BookService {
         book.setIsbn(dto.getIsbn());
         book.setQuantidadeDisponivel(dto.getQuantidadeInicial());
         book = bookRepository.save(book);
-        return bookMapper.toDTO(book);
+        return bookMapper.toDTOBook(book);
     }
 
     public void delete(Long id) {
@@ -75,6 +75,6 @@ public class BookService {
 
     public BookResponseDTO getByIsbn(String isbn) {
         Book book = bookRepository.findByIsbn(isbn).orElseThrow(() -> new BookNotFoundException(isbn));
-        return bookMapper.toDTO(book);
+        return bookMapper.toDTOBook(book);
     }
 }

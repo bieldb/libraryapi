@@ -47,25 +47,25 @@ public class LoanService {
         }
         book.setQuantidadeDisponivel(book.getQuantidadeDisponivel() - 1);
         bookRepository.save(book);
-        Loan loan = loanMapper.toEntity(dto);
+        Loan loan = loanMapper.toEntityLoan(dto);
         loan.setDataEmprestimo(LocalDate.now());
         loan.setStatus(LoanStatus.EMPRESTADO);
         loan.setBook(book);
         loan = loanRepository.save(loan);
-        return loanMapper.toDTO(loan);
+        return loanMapper.toDTOLoan(loan);
     }
 
     public LoanResponseDTO getById(Long id) {
         Loan loan = loanRepository.findById(id)
                 .orElseThrow(() -> new LoanNotFoundException(id));
-        return loanMapper.toDTO(loan);
+        return loanMapper.toDTOLoan(loan);
     }
 
     public List<LoanResponseDTO> getAll() {
         List<Loan> loans = loanRepository.findAll();
         List<LoanResponseDTO> dtos = new ArrayList<>();
         for (Loan loan : loans) {
-            dtos.add(loanMapper.toDTO(loan));
+            dtos.add(loanMapper.toDTOLoan(loan));
         }
         return dtos;
     }
@@ -74,7 +74,7 @@ public class LoanService {
         List<Loan> loans = loanRepository.findByStatus(status);
         List<LoanResponseDTO> dtos = new ArrayList<>();
         for (Loan loan : loans) {
-            dtos.add(loanMapper.toDTO(loan));
+            dtos.add(loanMapper.toDTOLoan(loan));
         }
         return dtos;
     }
@@ -84,7 +84,7 @@ public class LoanService {
                 LoanStatus.DEVOLVIDO);
         List<LoanResponseDTO> dtos = new ArrayList<>();
         for (Loan loan : loans) {
-            dtos.add(loanMapper.toDTO(loan));
+            dtos.add(loanMapper.toDTOLoan(loan));
         }
         return dtos;
     }
@@ -103,6 +103,6 @@ public class LoanService {
         loan.setDataDevolucaoReal(LocalDate.now());
         loanRepository.save(loan);
         bookRepository.save(book);
-        return loanMapper.toDTO(loan);
+        return loanMapper.toDTOLoan(loan);
     }
 }

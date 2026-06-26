@@ -8,7 +8,7 @@ import com.bieldb.libraryapi.model.Book;
 
 @Component
 public class BookMapper {
-    public Book toEntity(BookCreateRequestDTO dto) {
+    public Book toEntityBook(BookCreateRequestDTO dto) {
         Book book = new Book();
         book.setTitulo(dto.getTitulo());
         book.setAutor(dto.getAutor());
@@ -17,7 +17,7 @@ public class BookMapper {
         return book;
     }
 
-    public BookResponseDTO toDTO(Book book) {
+    public BookResponseDTO toDTOBook(Book book) {
         BookResponseDTO bookResponseDTO = new BookResponseDTO();
         bookResponseDTO.setId(book.getId());
         bookResponseDTO.setTitulo(book.getTitulo());
